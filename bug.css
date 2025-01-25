@@ -1,0 +1,17 @@
+The following CSS code snippet demonstrates an uncommon error related to the specificity of CSS selectors:
+
+```css
+#myElement {
+  color: blue;
+}
+
+.myElement {
+  color: red;
+}
+
+#myElement.myElement {
+  color: green;
+}
+```
+
+This code has unexpected behavior because of how CSS specificity works.  The element with id `myElement` and class `myElement` will inherit the `color: green` property and not the `color: blue` from the `#myElement` selector.  This is counterintuitive if one expects the ID selector to override the class selector because an ID is supposed to be more specific. However, it is important to understand that when the selector combines the ID and the class, it's evaluated as a more specific selector than either the ID or the class alone. The specificity calculation in CSS considers the number of IDs, classes, and element selectors and that combination is more specific than either one on its own.
